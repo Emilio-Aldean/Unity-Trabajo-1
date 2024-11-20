@@ -1,0 +1,4 @@
+repository "Proyecto 1 LDP actualizacion@Emiliox44@cloud"
+  path "/"
+    br "/main"
+    co "/main"
