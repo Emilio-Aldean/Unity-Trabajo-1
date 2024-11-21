@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D myrigidbody2D;
     private SpriteRenderer mySpriteRenderer;
     public GameObject Bullet;
-    private GameObject gameMangerObject;
+    private GameObject gameManagerObject;
     public GameManager myGameManager;
 
     void Start()
@@ -24,14 +24,14 @@ public class PlayerController : MonoBehaviour
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine(WalkCoRoutine());
 
-        gameMangerObject = GameObject.FindWithTag("GameController");
-        if (gameMangerObject == null)
+        gameManagerObject = GameObject.FindWithTag("GameController");
+        if (gameManagerObject == null)
         {
             Debug.LogError("No se encontró un objeto con el tag 'GameController' en la escena.");
             return;
         }
         
-        myGameManager = gameMangerObject.GetComponent<GameManager>();
+        myGameManager = gameManagerObject.GetComponent<GameManager>();
         if (myGameManager == null)
         {
             Debug.LogError("No se encontró el componente GameManager en el GameController.");
@@ -45,9 +45,11 @@ public class PlayerController : MonoBehaviour
             myrigidbody2D.linearVelocity = new Vector2(myrigidbody2D.linearVelocity.x,playerJumpForce);
         }
         myrigidbody2D.linearVelocity = new Vector2(playerSpeed, myrigidbody2D.linearVelocity.y);
-        /*if (Input.GetKeyDown(KeyCode.E)) {
+        
+        if (Input.GetKeyDown(KeyCode.E)) 
+        {
             Instantiate(Bullet, transform.position, Quaternion.identity);
-        }*/
+        }
     }
 
     IEnumerator WalkCoRoutine() {
